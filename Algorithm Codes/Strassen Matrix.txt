@@ -1,0 +1,42 @@
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int[,] x = {    { 3, 2 }, 
+                            { 1, 5 } };
+
+            int[,] y = {    { 2, 2 }, 
+                            { 3, 4 } };
+            int a = 3, b = 2, c = 1, d = 5, e = 2, f = 2, g = 3, h = 4;
+            int r, s, t, u, p1, p2, p3, p4, p5, p6, p7;
+            p1 = a * (f - h);
+            p2 = (a + b) * h;
+            p3 = (c + d) * e;
+            p4 = d * (g - e);
+            p5 = (a+d)*(e+h);
+            p6 = (b-d)*(g + h);
+            p7 = (a - c) * (e + f);
+            r = p5 + p4 - p2 + p6;
+            s = p1 + p2;
+            t = p3 + p4;
+            u = p5 + p1 - p3 - p7;
+            Console.WriteLine(r+" - "+s);
+            Console.WriteLine(t + " - " + u);
+            //int[,] c= new int[2,2];
+            //c[0, 0] = (a[0, 0] * b[0, 0]) + (a[0, 1] * b[1, 0]);
+            //c[0, 1] = (a[0, 0] * b[0, 1]) + (a[1, 0] * b[1, 1]);
+            //c[1, 0] = (a[1, 0] * b[0, 0]) + (a[1, 1] * b[1, 0]);
+            //c[1, 1] = (a[1, 0] * b[0, 1]) + (a[1, 1] * b[1, 1]);
+
+            //for (int i = 0; i < 2; i++)
+            //{
+            //    for (int j = 0; j < 2; j++)
+            //    {
+            //        Console.Write(c[i,j] + " - " );
+            //    }
+            //    Console.WriteLine("");
+            //}
+        }
+        
+    }
+}

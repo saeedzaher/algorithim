@@ -1,0 +1,25 @@
+static void Main(string[] args)
+        {
+            int[] coin = {1,5,10,25};
+            int n = 92;
+            Console.WriteLine(coin_exchange(coin, n));
+        }
+        static int coin_exchange(int[]coin, int n)
+        {
+            int num = 0;
+            while(n!=0)
+            {
+                for (int i = coin.Length-1; i >= 0; i--)
+                {
+                    if(n>=coin[i])
+                    {
+                        num++;
+                        n = n - coin[i];
+                        i++;
+                    }
+                }
+            }
+            return num;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] A = new int[100];
+            A=getNums(A);
+
+            SQ(A, A.Length, 17);
+        }
+
+        static int[] getNums(int[] A)
+        {
+            Random rnd = new Random();
+            for (int i = 0; i < A.Length; i++)
+            {
+                A[i] = rnd.Next(0, A.Length);
+            }
+            Array.Sort(A);
+            return A;
+        }
+
+
+        static void SQ(int[] A, int lengthh, int num)
+        {
+            int index = 0;
+            while ((index < lengthh) && A[index] < num) 
+            {
+                index++;
+               
+            }
+            if ((index < lengthh) && A[index] == num)
+            {
+                Console.WriteLine("the searched value is detected, {0}", A[index]);
+            }
+            else
+                Console.WriteLine("doesnt exist");
+
+
+        }
+
+    }
+}

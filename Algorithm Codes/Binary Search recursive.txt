@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace merge_sort
+{
+    internal class Program
+    {
+        static void Main(string[] args) 
+        {
+        int []a=new int[1000];
+            a = getnums(a);
+            BinaryS(a, 0, a.Length - 1, 300); //agar targetaka habu daigarentawa
+        }
+        static int[] getnums(int[] a)
+        {
+            Random r = new Random();
+            for (int i = 0; i < a.Length; i++)
+            {
+                a[i] = r.Next(0,a.Length);
+            }
+            return a;
+        }
+
+        static void BinaryS(int[]a, int low, int hight, int x) // low yakam indexa  hight kota indexa wa x targeta
+        {
+            int m; // wata indexi nawarasti arrayaka
+            if (low > hight)  
+            {
+                Console.WriteLine("zero");
+            }
+            else
+            {
+                m = (low + hight) / 2;
+                if (x == a[m]) 
+                {
+                    Console.WriteLine(a[m]); // agar btawe target ba index pshan bdatn awa aw line awha bnusa m;
+                }
+                if (x > a[m])
+                {
+                    Console.WriteLine("target is greater than middle value");
+                }
+                if (x < a[m]) 
+                {
+                    Console.WriteLine("target is smaller than middle value");
+                }
+            }
+        }
+
+    }
+}

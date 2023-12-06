@@ -1,0 +1,58 @@
+using System;
+
+namespace ConsoleApp17
+{
+	public class Lab_6_Left_factoring_
+	{
+
+		static void Main(String[] args)
+		{
+			int[] a = new int[200000];
+			for (int i = 0; i < a.Length; i++)
+			{
+				a[i] = i;
+			}
+			//s_search(a,16,34);
+			long first = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+			Console.WriteLine(s_search(a, a.Length, 100999));
+			long end = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+			Console.WriteLine(end - first);
+
+			long bfirst = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+			Console.WriteLine(binary_search(a, a.Length, 100999));
+			long bend = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+			Console.WriteLine(bend - bfirst);
+
+		}
+		public static int s_search(int[] A, int N, int Num)
+		{
+			int index = 0;
+
+			while ((index < N) && (A[index] < Num))
+				index++;
+
+			if ((index < N) && (A[index] == Num))
+				return index;
+			else
+				return -1;
+		}
+		public static int binary_search(int[] A, int N, int Num)
+		{
+			int first = 0;
+			int last = N - 1;
+			int mid = (first + last) / 2;
+			while ((A[mid] != Num) && (first <= last))
+			{
+				if (A[mid] > Num)
+					last = mid - 1;
+				else
+					first = mid + 1;
+				mid = (first + last) / 2;
+			}
+			if (A[mid] == Num)
+				return mid;
+			else
+				return -1;
+		}
+	}
+}

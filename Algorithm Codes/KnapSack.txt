@@ -1,0 +1,78 @@
+ static void Main(string[] args)
+        {
+            double[] price = { 25, 24, 15 };
+            double[] weight = { 18, 15, 10 };
+            int c = 20;
+
+            int p = KnapSack(price, weight, c);
+        }
+        static int KnapSack(double[] price, double[] weight, int c)
+        {
+
+            int total_profit = 0;
+            double[] pri_kg = new double[price.Length];
+            for (int i = 0; i < pri_kg.Length; i++)
+            {
+                pri_kg[i] = price[i] / weight[i];
+            }
+
+            for (int i = 0; i < pri_kg.Length; i++)
+            {
+                for (int j = 0; j < pri_kg.Length-1; j++)
+                {
+                    if (pri_kg[j + 1] > pri_kg[j])
+                    {
+                        double t = pri_kg[j + 1];
+                        pri_kg[j + 1] = pri_kg[j];
+                        pri_kg[j] = t;
+
+                        double t2 = price[j + 1];
+                        price[j + 1] = price[j];
+                        price[j] = t2;
+
+                        double t3 = weight[j + 1];
+                        weight[j + 1] = weight[j];
+                        weight[j] = t3;
+                    }
+                }
+            }
+            for (int i = 0; i < pri_kg.Length; i++)
+            {
+                Console.WriteLine(pri_kg[i]+" - " + price[i] + " - " + weight[i]);
+            }
+            // c = 20;
+            // check weight
+            double px = 0;
+            double wx = 0;
+            double[] x = new double[price.Length];
+            for (int i = 0; i < price.Length; i++)
+            {
+                x[i] = 0;
+            }
+            int last_i=0;
+            for (int i = 0; i < pri_kg.Length; i++)
+            {
+                if (c >= weight[i])
+                {
+                    c = c - (int)weight[i];
+                    x[i] = 1;
+                    last_i = i;
+                }
+            }
+            x[last_i+1] = c / weight[last_i + 1];
+            for (int i = 0; i < x.Length; i++)
+            {
+                Console.Write(x[i] + " - ");
+            }
+            Console.WriteLine();
+            for (int i = 0; i < price.Length; i++)
+            {
+                px = px + price[i] * x[i];
+                wx = wx + weight[i] * x[i];
+            }
+            Console.WriteLine("Total Profit = "+px);
+            Console.WriteLine("Total Knapsack Size = " + wx);// must be equal to the c or less than c
+            return total_profit;
+        }
+    }
+}

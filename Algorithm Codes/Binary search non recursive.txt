@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace merge_sort
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+            Console.WriteLine(BinSearch(a,a.Length,5));
+            //awa pet daretn targetakat la indexi chanda
+            
+        }
+
+        static int BinSearch(int []a, int n, int num) // n wata lengthi arrayaka wa num = target
+        {
+            int first = 0;
+            int last = n - 1;
+            int mid=(first+last)/2;
+            while ((a[mid]!=num) &&(first<=last))
+            {
+                if (a[mid]>num)
+                {
+                    last = mid - 1;
+                }
+                else
+                {
+                    first = mid + 1;
+                }
+                mid = (first+last)/2;
+            }
+            if (a[mid]==num)
+            {
+                return mid; // agar btawe targetakat bo print bkatn lera danusi  return a[mid];
+            }
+            else 
+            {
+                return -1;
+            }
+           
+            
+
+
+        }
+      
+
+      
+    }
+}

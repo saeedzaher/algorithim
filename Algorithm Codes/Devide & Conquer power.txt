@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace merge_sort
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Console.Write("Enter number : ");
+            //int x=int.Parse(Console.ReadLine());
+            //Console.Write("Enter number : ");
+            //int y = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(DC_power(x,y));
+        }
+        
+        static int DC_power(int x,int n)  //devide and conquer power    x= zhmara  n = twan
+        {
+            if (n == 0) //wata agar twanaka 0 bw awa dakata yak
+            {
+                return 1;
+            }
+            if (n==1)  //wata agar twanaka 1 bw awa dakata zhmaraka xoy
+            {
+                return x;
+            }
+            if(n%2==0) //agar twanaka jut bu awa twanaka dabash du dakatn
+            {
+                int y=DC_power(x,n/2);
+                return y*y;
+            }
+            else //agar twanaka tak bu awa twanaka kam yak daka pashan dabash du dakatn
+            {
+                int y=DC_power(x,(n-1)/2);
+                return y*y*x;
+            }
+        }
+
+      
+    }
+}

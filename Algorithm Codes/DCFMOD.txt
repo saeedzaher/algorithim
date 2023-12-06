@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace merge_sort
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //devide and conquer fast modular exponential
+
+            Console.WriteLine(DCFMOD(3,2,2));
+        }
+        
+        static int DCFMOD(int x,int n,int m) //x= zhmara  n = twan m = mod  wata x twan n mod m
+        {
+            if (n == 0) //wata agar twanaka 0 bw awa dakata yak
+            {
+                return 1;
+            }
+            else if (n%2==0)  //agar twanaka jut bu 
+            {
+               int y=DCFMOD(x,n/2,m); //awa twanaka dabash du dakatn dwatr modaka dakat w dayxata naw y
+                return (y * y) % m;  // pashan y * y daka w awja modi m dakatn
+            }
+            
+            else //agar twanaka tak bu 
+            {
+                return((x % m) * DCFMOD(x, n - 1, m)) % m; // awa rudadatn
+            }
+        }
+
+      
+    }
+}

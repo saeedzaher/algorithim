@@ -1,0 +1,65 @@
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] p = {3,5,6,10,11,14,15,18,20};
+            int n = 3;
+            job_schedualing(p, n);
+        }
+        static void job_schedualing(int[] job, int p)
+        {
+            int[] sjrf = new int[p];
+            for (int i = 0; i < job.Length; i++)
+            {
+                int m = min_index(sjrf);
+                sjrf[m] += job[i];
+            }
+            for (int i = 0; i < sjrf.Length; i++)
+            {
+                Console.WriteLine(" p "+(i+1)+" = "+sjrf[i]+" time");
+            }
+            int maxs = max_result(sjrf);
+            Console.WriteLine("In Shortest Job Run First = " + maxs);
+
+            int[] ljrf = new int[p];
+            for (int i = job.Length-1; i >=0 ; i--)
+            {
+                int m = min_index(ljrf);
+                ljrf[m] += job[i];
+            }
+            for (int i = 0; i < ljrf.Length; i++)
+            {
+                Console.WriteLine(" p " + (i + 1) + " = " + ljrf[i] + " time");
+            }
+            int maxl = max_result(ljrf);
+            Console.WriteLine("In Longest Job Run First = " + maxl);
+
+            if(maxs> maxl)
+                Console.WriteLine("longest is better");
+            else
+                Console.WriteLine("shortest is better");
+
+        }
+        static int max_result(int[] a)
+        {
+            int val = a[0];
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] > val)
+                    val = a[i];
+            }
+            return val;
+        }
+        static int min_index(int[] a)
+        {
+            int min = a[0];
+            int minindex = 0;
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] < min)
+                    minindex = i;
+            }
+            return minindex;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace merge_sort
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter number : ");
+            int x=int.Parse(Console.ReadLine());
+            Console.Write("Enter power : ");
+            int y = int.Parse(Console.ReadLine());
+            Console.WriteLine(naive_power(x,y));
+
+
+        }
+        
+        static int naive_power(int x,int n) //x=zhmara   y=twan
+        {
+            
+            int result = 1;
+            for (int i = 1; i <= n; i++)
+            {
+                result = x * result;
+               
+            }
+            return result;
+        }
+
+      
+    }
+}
